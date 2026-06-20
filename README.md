@@ -1,16 +1,51 @@
-# React + Vite
+# Flexio Admin Engine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Internal admin portal for Flexio — login-gated dashboard for the founder/CEO + dev cofounder.
 
-Currently, two official plugins are available:
+## Stack
+React + Vite, Tailwind CSS v4, Framer Motion, React Router, Lucide icons — same stack as the Flexio storefront.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run it
+```bash
+npm install
+npm run dev
+```
+Open the printed localhost URL. You'll land on `/login`.
 
-## React Compiler
+**Demo login:** username `admin`, password `flexio2026`
+(set in `src/admin/AdminAuthContext.jsx` — see the note below before this goes anywhere real)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Folder structure
+```
+src/
+  admin/            auth gate — context, route guard, credential check
+    AdminAuthContext.jsx
+    ProtectedRoute.jsx
+  pages/            full routed pages
+    LoginPage.jsx
+    DashboardPage.jsx
+  components/       reusable dashboard widgets
+    Sidebar.jsx
+    Topbar.jsx
+    StatCard.jsx
+    RecentOrdersTable.jsx
+    LowStockAlerts.jsx
+    AdminFooter.jsx
+    mockData.js     placeholder data — swap for real API calls
+```
 
-## Expanding the ESLint configuration
+## Before this is reachable outside your laptop
+Login currently checks the username/password in the browser against a hardcoded
+value in AdminAuthContext.jsx. That's fine while it's just you two running it
+locally, but it is not secure for a deployed app — anyone can read the
+password straight out of the JS bundle in devtools.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Next real step: build a /auth/login endpoint on your FastAPI backend that
+checks credentials server-side and returns a JWT, then swap the login()
+function in AdminAuthContext.jsx to call that instead of verifyCredentials().
+
+## What's still mock data
+src/components/mockData.js holds the stats, recent orders, and low-stock
+list shown on the dashboard. Replace those with real fetches from your
+backend once the Orders/Products APIs exist — every component already expects
+the same shape, so swapping the data source shouldn't need component changes.
