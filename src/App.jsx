@@ -6,6 +6,8 @@ import DashboardPage from './pages/DashboardPage';
 import ProductPage from './pages/ProductPage';
 import AddProductPage from './pages/AddProductPage';
 import OrderPage from './pages/OrderPage';
+import UsersPage from './pages/UsersPage';
+import SettingsPage from './pages/SettingsPage';
 
 function withGuard(element) {
   return <ProtectedRoute>{element}</ProtectedRoute>;
@@ -21,6 +23,8 @@ export default function App() {
         <Route path="/products" element={withGuard(<ProductPage />)} />
         <Route path="/products/new" element={withGuard(<AddProductPage />)} />
         <Route path="/orders" element={withGuard(<OrderPage />)} />
+        <Route path="/users" element={withGuard(<UsersPage />)} />
+        <Route path="/settings" element={withGuard(<SettingsPage />)} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </AdminAuthProvider>

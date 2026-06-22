@@ -66,3 +66,69 @@ export const ORDER_STATUS_STYLES = {
   Delivered: { background: 'rgba(72, 199, 116, 0.12)',  color: '#48c774' },
   Cancelled: { background: 'rgba(255, 90, 90, 0.12)',   color: '#ff5a5a' },
 };
+
+// --- Users page data ---
+
+export const USER_FILTERS = ['All', 'Active', 'Banned'];
+
+export const USER_STATUS_STYLES = {
+  Active: { background: 'rgba(200, 255, 0, 0.12)', color: '#c8ff00' },
+  Banned: { background: 'rgba(255, 90, 90, 0.12)', color: '#ff5a5a' },
+};
+
+export const USERS = [
+  {
+    id: 'u-1001',
+    name: 'Marcus Thorne',
+    email: 'marcus@flexio.vip',
+    phone: '+44 7911 123456',
+    orders: 12,
+    joined: 'Dec 02, 2023',
+    status: 'Active',
+    membership: 'Elite Member',
+    orderHistory: [
+      { id: '#FX-99210-A', item: 'Luxe Shell Jacket x1', price: '$1,250', time: '3 days ago' },
+      { id: '#FX-98441-C', item: 'Vapor Max Boots x1', price: '$890', time: '2 weeks ago' },
+    ],
+  },
+  {
+    id: 'u-1002',
+    name: 'Elena Vlasov',
+    email: 'elena@vlasov.co',
+    phone: '+7 900 332-11-00',
+    orders: 3,
+    joined: 'Jan 15, 2024',
+    status: 'Banned',
+    membership: 'Standard',
+    orderHistory: [
+      { id: '#FX-87750-B', item: 'CyberRunner V2 x1', price: '$220', time: '1 month ago' },
+    ],
+  },
+  {
+    id: 'u-1003',
+    name: 'Jaxson Kade',
+    email: 'jk@subversive.tech',
+    phone: '+1 212 555-0199',
+    orders: 42,
+    joined: 'Aug 28, 2022',
+    status: 'Active',
+    membership: 'Elite Member',
+    orderHistory: [
+      { id: '#FX-95012-D', item: 'Void Hoodie x2', price: '$190', time: '5 days ago' },
+      { id: '#FX-94300-A', item: 'Titan Sneakers x1', price: '$180', time: '3 weeks ago' },
+    ],
+  },
+  {
+    id: 'u-1004',
+    name: 'Sofia Chen',
+    email: 'sofia.c@gmail.com',
+    phone: '+86 10 6400 1111',
+    orders: 8,
+    joined: 'Mar 11, 2024',
+    status: 'Active',
+    membership: 'Standard',
+    orderHistory: [
+      { id: '#FX-90112-C', item: 'Vapor Max Boots x1', price: '$890', time: '1 week ago' },
+    ],
+  },
+];
